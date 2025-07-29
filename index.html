@@ -2,21 +2,33 @@
 <html lang="my">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>📺 Anime Video Library</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ဖောက်ပြည်သောက်</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    <h1>🎬 Anime Video List</h1>
-    <div class="filters">
-      <button onclick="filterVideos('all')">All</button>
-      <button onclick="filterVideos('free')">Free</button>
-      <button onclick="filterVideos('vip')">VIP</button>
-    </div>
-    <div id="videoList" class="grid"></div>
+    <header>
+      <h1>ကနောက်ဖောက်အကြပ်</h1>
+      <div class="controls">
+        <input type="text" id="searchInput" placeholder="မြစ်အကြမ်းသောက်...">
+        <select id="categoryFilter">
+          <option value="all">စတိတ်ကမ်</option>
+        </select>
+      </div>
+    </header>
+
+    <main id="videoList">
+      <!-- Videos will be loaded here -->
+    </main>
+
+    <footer>
+      <p>၊ ၊ မသုတ်နက်လှုတေရော် နယ်းလည်</p>
+    </footer>
   </div>
 
-  <script src="script.js"></script>
+  <script src="data.js"></script>
+  <script src="history.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
