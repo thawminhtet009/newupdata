@@ -1,57 +1,43 @@
-const SHEET_URL = "https://sheets.googleapis.com/v4/spreadsheets/1yFi2LC02KhBQZ4m6kfzad_1FBsom9QDABPUHS7RKOJM/values/member!A2:D100?key=AIzaSyDZqMYFCHG17qgCbrFhyoEIdrR9ua86348";
+const sheetUrl = "https://sheets.googleapis.com/v4/spreadsheets/1yFi2LC02KhBQZ4m6kfzad_1FBsom9QDABPUHS7RKOJM/values/member!A2:D100?key=AIzaSyDZqMYFCHG17qgCbrFhyoEIdrR9ua86348";
 
-let allVideos = [];
+const videoFrame = document.getElementById("videoFrame");
+const videoTitle = document.getElementById("videoTitle");
+const downloadButtons = document.getElementById("downloadButtons");
+const episodeContainer = document.getElementById("episodeContainer");
 
-fetch(SHEET_URL)
+let videoData = [];
+
+function loadVideo(index) {
+  const data = videoData[index];
+  if (!data) return;
+  videoTitle.textContent = data[0]; // Title
+  videoFrame.src = data[1]; // Embed URL
+  downloadButtons.innerHTML = `
+    <button onclick="window.open('${data[2]}','_blank')">Download 1</button>
+    <button onclick="window.open('${data[3]}','_blank')">Download 2</button>
+  `;
+}
+
+fetch(sheetUrl)
   .then(res => res.json())
   .then(data => {
-    allVideos = data.values.map(row => ({
-      id: row[0],
-      title: row[1],
-      type: row[2],
-      url: row[3]
-    }));
-
-    const currentPage = window.location.pathname;
-    if (currentPage.includes("watch.html")) {
-      showWatchPage();
-    } else {
-      renderVideoList("all");
+    videoData = data.values;
+    if (!videoData || videoData.length === 0) {
+      videoTitle.textContent = "No videos found.";
+      return;
     }
+    // Load first video
+    loadVideo(0);
+    // Create episode buttons
+    videoData.forEach((video, i) => {
+      const ep = document.createElement("div");
+      ep.className = "episode-item";
+      ep.textContent = video[0];
+      ep.onclick = () => loadVideo(i);
+      episodeContainer.appendChild(ep);
+    });
   })
-  .catch(() => {
-    alert("❌ Failed to load videos");
+  .catch(err => {
+    videoTitle.textContent = "Failed to load videos.";
+    console.error(err);
   });
-
-function renderVideoList(filter) {
-  const list = document.getElementById("videoList");
-  list.innerHTML = "";
-
-  let videos = allVideos;
-  if (filter === "free") videos = allVideos.filter(v => v.type.toLowerCase() === "free");
-  if (filter === "vip") videos = allVideos.filter(v => v.type.toLowerCase() === "vip");
-
-  videos.forEach(video => {
-    const card = document.createElement("div");
-    card.className = "card";
-    card.innerHTML = `<strong>${video.title}</strong><br><small>${video.type}</small>`;
-    card.onclick = () => location.href = `watch.html?post=${video.id}`;
-    list.appendChild(card);
-  });
-}
-
-function filterVideos(type) {
-  renderVideoList(type);
-}
-
-function showWatchPage() {
-  const params = new URLSearchParams(window.location.search);
-  const postId = params.get("post");
-  const video = allVideos.find(v => v.id === postId);
-  if (!video) {
-    document.getElementById("videoTitle").innerText = "❌ Video not found!";
-    return;
-  }
-  document.getElementById("videoTitle").innerText = video.title;
-  document.getElementById("videoFrame").src = video.url;
-}
