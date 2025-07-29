@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<html lang="my">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>📺 Watch</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Watch</title>
+  <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-  <div class="container">
-    <a href="index.html" class="back">← Back to list</a>
-    <div id="videoContainer">
-      <h2 id="videoTitle">Loading...</h2>
-      <iframe id="videoFrame" width="100%" height="420" frameborder="0" allowfullscreen></iframe>
+  <div class="watch-container">
+    <div class="video-player" id="embedBox"></div>
+    <div class="video-info">
+      <h2 id="videoTitle"></h2>
+      <a id="downloadLink" target="_blank">⬇️ Download</a>
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <script src="assets/data.js"></script>
+  <script src="assets/watch.js"></script>
 </body>
 </html>
