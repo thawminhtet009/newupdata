@@ -4,54 +4,74 @@ body {
   background: #111;
   color: #fff;
 }
-
-.container {
+header {
+  padding: 1em;
+  background: #222;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  align-items: center;
+  justify-content: center;
+}
+input, select {
+  padding: 0.5em;
+  font-size: 1em;
+  border-radius: 4px;
+  border: none;
+}
+main {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1em;
+  padding: 1em;
+}
+.card {
+  background: #1d1d1d;
+  border-radius: 8px;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  height: 100vh;
 }
-
-.video-section {
-  flex: 2;
-  background: #000;
-}
-
-#videoFrame {
+.card img {
   width: 100%;
-  height: 100%;
+  height: 150px;
+  object-fit: cover;
 }
-
-.info-section {
-  padding: 1rem;
-  background: #1c1c1c;
+.card div {
+  padding: 0.5em;
 }
-
-#downloadButtons button {
-  margin-right: 10px;
-  padding: 8px 12px;
+.card a {
+  color: cyan;
+  text-decoration: none;
+}
+.new {
+  color: yellow;
+  font-weight: bold;
+  margin-right: 0.5em;
+}
+.watch-container {
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.video-player iframe {
+  width: 90vw;
+  height: 50vh;
+  max-width: 800px;
   border: none;
-  background: #007bff;
-  color: #fff;
-  cursor: pointer;
-  border-radius: 4px;
+  border-radius: 12px;
 }
-
-.episode-list {
-  padding: 10px;
-  overflow-x: auto;
-  background: #222;
-  white-space: nowrap;
+.video-info {
+  margin-top: 1em;
+  text-align: center;
 }
-
-.episode-item {
+.video-info a {
   display: inline-block;
-  background: #333;
-  padding: 8px 12px;
-  margin-right: 8px;
-  cursor: pointer;
-  border-radius: 4px;
-}
-
-.episode-item:hover {
-  background: #555;
+  padding: 0.5em 1em;
+  background: green;
+  border-radius: 8px;
+  color: white;
+  margin-top: 0.5em;
+  text-decoration: none;
 }
