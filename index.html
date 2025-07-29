@@ -1,34 +1,28 @@
 <!DOCTYPE html>
-<html lang="my">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ဖောက်ပြည်သောက်</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Video Viewer</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
   <div class="container">
-    <header>
-      <h1>ကနောက်ဖောက်အကြပ်</h1>
-      <div class="controls">
-        <input type="text" id="searchInput" placeholder="မြစ်အကြမ်းသောက်...">
-        <select id="categoryFilter">
-          <option value="all">စတိတ်ကမ်</option>
-        </select>
-      </div>
-    </header>
+    <div class="video-section">
+      <iframe id="videoFrame" src="" frameborder="0" allowfullscreen></iframe>
+    </div>
 
-    <main id="videoList">
-      <!-- Videos will be loaded here -->
-    </main>
+    <div class="info-section">
+      <h2 id="videoTitle">Loading...</h2>
+      <div id="downloadButtons"></div>
+    </div>
 
-    <footer>
-      <p>၊ ၊ မသုတ်နက်လှုတေရော် နယ်းလည်</p>
-    </footer>
+    <div class="episode-list">
+      <h3>Episodes</h3>
+      <div id="episodeContainer"></div>
+    </div>
   </div>
 
-  <script src="data.js"></script>
-  <script src="history.js"></script>
-  <script src="app.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
