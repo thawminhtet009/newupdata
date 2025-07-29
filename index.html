@@ -1,28 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Video Viewer</title>
-  <link rel="stylesheet" href="style.css"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Gallery</title>
+  <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-  <div class="container">
-    <div class="video-section">
-      <iframe id="videoFrame" src="" frameborder="0" allowfullscreen></iframe>
-    </div>
+  <header>
+    <h1>🎥 Video Gallery</h1>
+    <input type="text" id="searchInput" placeholder="Search videos...">
+    <select id="categoryFilter">
+      <option value="all">All Categories</option>
+    </select>
+  </header>
 
-    <div class="info-section">
-      <h2 id="videoTitle">Loading...</h2>
-      <div id="downloadButtons"></div>
-    </div>
+  <main id="videoContainer"></main>
 
-    <div class="episode-list">
-      <h3>Episodes</h3>
-      <div id="episodeContainer"></div>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
+  <script src="assets/data.js"></script>
+  <script src="assets/app.js"></script>
 </body>
 </html>
