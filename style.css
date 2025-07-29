@@ -1,0 +1,64 @@
+body {
+  font-family: sans-serif;
+  background: #111;
+  color: #eee;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.card {
+  background: #222;
+  border-radius: 12px;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.03);
+  background: #333;
+}
+
+.filters {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.filters button {
+  background: #333;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  margin: 0 4px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.filters button:hover {
+  background: #555;
+}
+
+.back {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: #ccc;
+  text-decoration: none;
+}
